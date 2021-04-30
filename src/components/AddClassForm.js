@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import DatePicker from '../components/DatePicker';
+import ClassLengthPicker from '../components/ClassLengthPicker';
 
 const AddClassForm = ({ onSubmit, initialValues }) => {
     const [ date, setDate ] = useState(initialValues.date);
-    const [ length, setLength ] = useState(initialValues.length)
+    const [ length, setLength ] = useState(initialValues.length);
+
+    const [ classLength, setClassLength ] = useState();
 
     const handleDatePicker = (val) => {
         var formattedDate = ('0' + val.getDate()).slice(-2);
@@ -16,23 +19,15 @@ const AddClassForm = ({ onSubmit, initialValues }) => {
         setDate(dateString);
     }
 
-    console.log(date);
+    console.log(length);
 
     return (
         <View>
             <Text style={styles.label}>Enter Date:</Text>
             <DatePicker handleInput = { handleDatePicker }/>
-            {/* <Text style={styles.label}>Enter Student Name:</Text>
-            <TextInput
-                style={ styles.input }
-                value={ studentName }
-                onChangeText={text => setStudentName(text)}
-            /> */}
             <Text style={styles.label}>Enter Class Length:</Text>
-            <TextInput
-                style={ styles.input }
-                value={ length }
-                onChangeText={text => setLength(text)}
+            <ClassLengthPicker 
+              onChoice={(val) => setLength(val) }
             />
             <TouchableOpacity 
               style={ styles.button }
@@ -83,6 +78,18 @@ const styles = StyleSheet.create({
       buttonText: {
         color: '#fff',
         fontWeight: 'bold',
+        fontSize: 18
+      },
+      pickerButton: {
+        backgroundColor: '#fff',
+        height: 35,
+        borderRadius: 5,
+        width: 100,
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      pickerButtonText: {
         fontSize: 18
       }
 })

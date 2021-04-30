@@ -33,10 +33,6 @@ const Students = ({ navigation, deleteVisible }) => {
                         image = item.image;
                     }
 
-                    
-
-                    console.log(item.image);
-
                     return (
                         <View>
                             <TouchableOpacity

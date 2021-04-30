@@ -8,7 +8,7 @@ const StudentPicker = ({ onChoice }) => {
     return (
         <View style={ styles.container }>
             <ModalSelector
-                    data={ state} 
+                    data={ state } 
                     keyExtractor={ item => item.id }
                     labelExtractor={ item => item.name }
                     initValue="Select a student"

@@ -25,14 +25,6 @@ const studentReducer = (state, action) => {
     }
   };
 
-  const getStudents = dispatch => {
-    return async () => {
-      const response = await jsonServer.get('/students');
-  
-      dispatch({ type: 'get_students', payload: response.data });
-    };
-  };
-
   // ADD
 
   const addStudent = () => {
@@ -99,6 +91,14 @@ const studentReducer = (state, action) => {
       dispatch({ type: 'get_classes', payload: response.data });
     }
   }
+
+  const getStudents = dispatch => {
+    return async () => {
+      const response = await jsonServer.get('/students');
+  
+      dispatch({ type: 'get_students', payload: response.data });
+    };
+  };
 
 export const { Context, Provider } = createDataContext(
   studentReducer,
